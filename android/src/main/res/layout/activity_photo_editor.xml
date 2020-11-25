@@ -5,6 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:fitsSystemWindows="true"
+    android:background="@color/white"
     tools:context="com.ahmedadeltito.photoeditor.PhotoEditorActivity">
 
     <com.ahmedadeltito.photoeditor.widget.SlidingUpPanelLayout
@@ -14,25 +15,26 @@
         android:gravity="bottom"
         app:umanoDragView="@+id/dragView"
         app:umanoOverlay="true"
-        app:umanoShadowHeight="4dp">
+        app:umanoShadowHeight="0dp">
 
         <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:background="#000000"
+            android:background="@color/white"
             android:gravity="center">
 
             <RelativeLayout
                 android:id="@+id/parent_image_rl"
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/top_parent_rl"
+                android:layout_above="@+id/bottom_parent_rl"
                 android:layout_centerInParent="true">
 
                 <ImageView
                     android:id="@+id/photo_edit_iv"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_centerInParent="true"
                     android:adjustViewBounds="true"
                     android:contentDescription="@string/app_name"
                     android:scaleType="centerCrop" />
@@ -48,23 +50,59 @@
 
             </RelativeLayout>
 
-            <TextView
-                android:id="@+id/done_drawing_tv"
+            <LinearLayout
+                android:id="@+id/manage_panel"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_alignParentEnd="true"
-                android:layout_marginEnd="20dp"
-                android:layout_marginStart="20dp"
-                android:layout_marginTop="10dp"
-                android:padding="10dp"
-                android:shadowColor="#000000"
-                android:shadowDx="1"
-                android:shadowDy="1"
-                android:shadowRadius="2"
-                android:text="@string/done"
-                android:textColor="#FFFFFF"
-                android:textSize="20sp"
-                android:visibility="gone" />
+                android:layout_alignParentTop="true"
+                android:background="@drawable/rounded_bg"
+                android:layout_marginTop="65dp"
+                android:orientation="horizontal"
+                android:layout_centerHorizontal="true"
+                android:paddingLeft="5dp"
+                android:paddingRight="5dp">
+
+                <TextView
+                  android:id="@+id/add_text_tv"
+                  android:layout_width="wrap_content"
+                  android:layout_height="wrap_content"
+                  android:layout_alignParentEnd="true"
+                  android:layout_alignParentTop="true"
+                  android:padding="15dp"
+                  android:text="@string/ic_text"
+                  android:textColor="#FFFFFF"
+                  android:textSize="20sp" />
+
+                <TextView
+                  android:id="@+id/add_pencil_tv"
+                  android:layout_width="wrap_content"
+                  android:layout_height="wrap_content"
+                  android:layout_toStartOf="@+id/add_text_tv"
+                  android:padding="15dp"
+                  android:text="@string/ic_draw"
+                  android:textColor="#FFFFFF"
+                  android:textSize="20sp" />
+
+                <TextView
+                  android:id="@+id/add_crop_tv"
+                  android:layout_width="wrap_content"
+                  android:layout_height="wrap_content"
+                  android:layout_toStartOf="@+id/add_pencil_tv"
+                  android:padding="15dp"
+                  android:text="@string/ic_crop"
+                  android:textColor="#FFFFFF"
+                  android:textSize="20sp" />
+
+                <TextView
+                  android:id="@+id/clear_all_tv"
+                  android:layout_width="wrap_content"
+                  android:layout_height="wrap_content"
+                  android:layout_toStartOf="@+id/add_crop_tv"
+                  android:padding="15dp"
+                  android:text="@string/ic_clear_all"
+                  android:textColor="#FFFFFF"
+                  android:textSize="20sp" />
+              </LinearLayout>
 
             <TextView
                 android:id="@+id/erase_drawing_tv"
@@ -80,7 +118,7 @@
                 android:shadowDy="1"
                 android:shadowRadius="2"
                 android:text="@string/erase"
-                android:textColor="#FFFFFF"
+                android:textColor="#003A5C"
                 android:textSize="20sp"
                 android:visibility="gone" />
 
@@ -93,9 +131,8 @@
             <View
                 android:id="@+id/top_shadow"
                 android:layout_width="match_parent"
-                android:layout_height="100dp"
-                android:layout_alignParentTop="true"
-                android:background="@drawable/fading_shadow" />
+                android:layout_height="50dp"
+                android:layout_alignParentTop="true" />
 
             <RelativeLayout
                 android:id="@+id/top_parent_rl"
@@ -104,6 +141,7 @@
                 android:layout_alignBottom="@+id/top_shadow"
                 android:layout_alignTop="@+id/top_shadow"
                 android:paddingLeft="5dp"
+                android:background="@drawable/shadow_header"
                 android:paddingRight="5dp">
 
                 <TextView
@@ -112,59 +150,40 @@
                     android:layout_height="wrap_content"
                     android:padding="15dp"
                     android:text="@string/ic_close"
-                    android:textColor="#FFFFFF"
-                    android:textSize="20sp" />
-
-                <TextView
-                    android:id="@+id/add_text_tv"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_alignParentEnd="true"
-                    android:layout_alignParentTop="true"
-                    android:padding="15dp"
-                    android:text="@string/ic_text"
-                    android:textColor="#FFFFFF"
-                    android:textSize="20sp" />
-
-                <TextView
-                    android:id="@+id/add_pencil_tv"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_toStartOf="@+id/add_text_tv"
-                    android:padding="15dp"
-                    android:text="@string/ic_draw"
-                    android:textColor="#FFFFFF"
-                    android:textSize="20sp" />
-
-                <TextView
-                    android:id="@+id/add_crop_tv"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_toStartOf="@+id/add_pencil_tv"
-                    android:padding="15dp"
-                    android:text="@string/ic_crop"
-                    android:textColor="#FFFFFF"
+                    android:textColor="#003A5C"
                     android:textSize="20sp" />
 
                 <TextView
                     android:id="@+id/add_image_emoji_tv"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_toStartOf="@+id/add_crop_tv"
                     android:padding="15dp"
                     android:text="@string/ic_images"
-                    android:textColor="#FFFFFF"
+                    android:textColor="#003A5C"
+                    android:visibility="invisible"
                     android:textSize="20sp" />
+
+                <TextView
+                    android:id="@+id/done_drawing_tv"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentEnd="true"
+                    android:layout_marginStart="20dp"
+                    android:padding="10dp"
+                    android:text="@string/done"
+                    android:textColor="#003A5C"
+                    android:textSize="20dp"
+                    android:visibility="gone" />
 
 
             </RelativeLayout>
 
-            <View
-                android:id="@+id/bottom_shadow"
-                android:layout_width="match_parent"
-                android:layout_height="100dp"
-                android:layout_alignParentBottom="true"
-                android:background="@drawable/below_shadow" />
+          <View
+            android:id="@+id/bottom_shadow"
+            android:layout_width="match_parent"
+            android:layout_height="62dp"
+            android:layout_alignParentBottom="true"
+            android:background="@drawable/below_shadow" />
 
             <RelativeLayout
                 android:id="@+id/bottom_parent_rl"
@@ -172,8 +191,10 @@
                 android:layout_height="wrap_content"
                 android:layout_alignBottom="@+id/bottom_shadow"
                 android:layout_alignTop="@+id/bottom_shadow"
-                android:paddingLeft="26dp"
-                android:paddingRight="26dp">
+                android:paddingLeft="20dp"
+                android:paddingRight="20dp"
+                android:layout_marginBottom="12dp"
+              >
 
                 <TextView
                     android:id="@+id/save_tv"
@@ -184,7 +205,8 @@
                     android:layout_centerVertical="true"
                     android:gravity="center"
                     android:text="@string/ic_save"
-                    android:textColor="#FFFFFF"
+                    android:visibility="invisible"
+                    android:textColor="#003A5C"
                     android:textSize="25sp" />
 
                 <TextView
@@ -196,34 +218,22 @@
                     android:layout_centerVertical="true"
                     android:layout_marginTop="4dp"
                     android:text="@string/save"
-                    android:textColor="#FFFFFF"
+                    android:textColor="#003A5C"
+                    android:visibility="invisible"
                     android:textSize="15sp" />
-
-                <TextView
-                    android:id="@+id/clear_all_tv"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_alignEnd="@+id/clear_all_text_tv"
-                    android:layout_centerVertical="true"
-                    android:layout_marginStart="20dp"
-                    android:layout_marginTop="4dp"
-                    android:layout_toEndOf="@+id/save_tv"
-                    android:gravity="center"
-                    android:text="@string/ic_clear_all"
-                    android:textColor="#FFFFFF"
-                    android:textSize="25sp" />
 
                 <TextView
                     android:id="@+id/clear_all_text_tv"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_below="@+id/clear_all_tv"
+                    android:layout_below="@+id/save_text_tv"
                     android:layout_centerVertical="true"
                     android:layout_marginStart="20dp"
                     android:layout_marginTop="4dp"
                     android:layout_toEndOf="@+id/save_tv"
                     android:text="@string/clear_all"
-                    android:textColor="#FFFFFF"
+                    android:visibility="invisible"
+                    android:textColor="#003A5C"
                     android:textSize="15sp" />
 
                 <TextView
@@ -237,9 +247,9 @@
                     android:layout_toEndOf="@+id/clear_all_tv"
                     android:gravity="center"
                     android:text="@string/ic_clear_all"
-                    android:textColor="#FFFFFF"
+                    android:textColor="#003A5C"
                     android:textSize="25sp"
-                    android:visibility="gone" />
+                    android:visibility="invisible" />
 
                 <TextView
                     android:id="@+id/undo_text_tv"
@@ -251,9 +261,9 @@
                     android:layout_marginTop="4dp"
                     android:layout_toEndOf="@+id/clear_all_tv"
                     android:text="@string/undo"
-                    android:textColor="#FFFFFF"
+                    android:textColor="#003A5C"
                     android:textSize="15sp"
-                    android:visibility="gone" />
+                    android:visibility="invisible" />
 
                 <TextView
                     android:id="@+id/go_to_next_screen_tv"
@@ -262,7 +272,7 @@
                     android:layout_alignParentEnd="true"
                     android:layout_centerVertical="true"
                     android:text="@string/ic_continue"
-                    android:textColor="#FFFFFF"
+                    android:textColor="#003A5C"
                     android:textSize="40sp" />
 
             </RelativeLayout>
@@ -283,7 +293,7 @@
                     android:background="@drawable/rounded_border_text_view"
                     android:padding="10dp"
                     android:text="@string/ic_delete"
-                    android:textColor="#FFFFFF"
+                    android:textColor="#003A5C"
                     android:textSize="30sp" />
 
             </RelativeLayout>

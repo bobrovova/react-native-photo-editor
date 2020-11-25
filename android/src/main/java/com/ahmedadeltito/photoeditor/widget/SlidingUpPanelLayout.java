@@ -49,7 +49,7 @@ public class SlidingUpPanelLayout extends ViewGroup {
     /**
      * Default height of the shadow above the peeking out panel
      */
-    private static final int DEFAULT_SHADOW_HEIGHT = 4; // dp;
+    private static final int DEFAULT_SHADOW_HEIGHT = 0; // dp;
 
     /**
      * If no fade color is given by default it will fade to 80% gray.
@@ -350,15 +350,7 @@ public class SlidingUpPanelLayout extends ViewGroup {
             mParallaxOffset = (int) (DEFAULT_PARALLAX_OFFSET * density);
         }
         // If the shadow height is zero, don't show the shadow
-        if (mShadowHeight > 0) {
-            if (mIsSlidingUp) {
-                mShadowDrawable = getResources().getDrawable(R.drawable.above_shadow);
-            } else {
-                mShadowDrawable = getResources().getDrawable(R.drawable.below_shadow);
-            }
-        } else {
-            mShadowDrawable = null;
-        }
+        mShadowDrawable = null;
 
         setWillNotDraw(false);
 

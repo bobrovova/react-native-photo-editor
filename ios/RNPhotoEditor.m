@@ -80,8 +80,6 @@ RCT_EXPORT_METHOD(Edit:(nonnull NSDictionary *)props onDone:(RCTResponseSenderBl
             [passHiddenControls addObject: [[NSString alloc] initWithString: hiddenControl]];
         }
 
-        photoEditor.hiddenControls = passHiddenControls;
-
         //Process Colors
         NSArray *colors = [props objectForKey: @"colors"];
         NSMutableArray *passColors = [[NSMutableArray alloc] initWithCapacity:colors.count];

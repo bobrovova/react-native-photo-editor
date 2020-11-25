@@ -130,8 +130,9 @@ public class PhotoEditorActivity extends AppCompatActivity implements View.OnCli
         }
 
 
-        Typeface newFont = getFontFromRes(R.raw.eventtusicons);
+        Typeface newFont = getFontFromRes(R.font.ionicons);
         Typeface fontAwesome = getFontFromRes(R.raw.font_awesome_solid);
+        Typeface icomoonFont = getFontFromRes(R.font.icomoon);
 
         emojiFont = getFontFromRes(R.raw.emojioneandroid);
 
@@ -170,12 +171,12 @@ public class PhotoEditorActivity extends AppCompatActivity implements View.OnCli
         addTextView.setTypeface(newFont);
         addPencil.setTypeface(newFont);
         addImageEmojiTextView.setTypeface(newFont);
-        addCropTextView.setTypeface(fontAwesome);
+        addCropTextView.setTypeface(icomoonFont);
         saveTextView.setTypeface(newFont);
         undoTextView.setTypeface(newFont);
-        clearAllTextView.setTypeface(newFont);
+        clearAllTextView.setTypeface(icomoonFont);
         goToNextTextView.setTypeface(newFont);
-        deleteTextView.setTypeface(newFont);
+        deleteTextView.setTypeface(icomoonFont);
 
         final List<Fragment> fragmentsList = new ArrayList<>();
 
@@ -389,10 +390,9 @@ public class PhotoEditorActivity extends AppCompatActivity implements View.OnCli
     private void updateBrushDrawingView(boolean brushDrawingMode) {
         photoEditorSDK.setBrushDrawingMode(brushDrawingMode);
         if (brushDrawingMode) {
-            updateView(View.GONE);
             drawingViewColorPickerRecyclerView.setVisibility(View.VISIBLE);
             doneDrawingTextView.setVisibility(View.VISIBLE);
-            eraseDrawingTextView.setVisibility(View.VISIBLE);
+            //eraseDrawingTextView.setVisibility(View.VISIBLE);
             LinearLayoutManager layoutManager = new LinearLayoutManager(PhotoEditorActivity.this, LinearLayoutManager.HORIZONTAL, false);
             drawingViewColorPickerRecyclerView.setLayoutManager(layoutManager);
             drawingViewColorPickerRecyclerView.setHasFixedSize(true);
@@ -405,7 +405,6 @@ public class PhotoEditorActivity extends AppCompatActivity implements View.OnCli
             });
             drawingViewColorPickerRecyclerView.setAdapter(colorPickerAdapter);
         } else {
-            updateView(View.VISIBLE);
             drawingViewColorPickerRecyclerView.setVisibility(View.GONE);
             doneDrawingTextView.setVisibility(View.GONE);
             eraseDrawingTextView.setVisibility(View.GONE);
@@ -417,7 +416,7 @@ public class PhotoEditorActivity extends AppCompatActivity implements View.OnCli
                 android.Manifest.permission.WRITE_EXTERNAL_STORAGE);
 
         if (permissionCheck == PackageManager.PERMISSION_GRANTED) {
-            updateView(View.GONE);
+            //updateView(View.GONE);
             RelativeLayout.LayoutParams layoutParams = new RelativeLayout.LayoutParams(
                     RelativeLayout.LayoutParams.WRAP_CONTENT, RelativeLayout.LayoutParams.WRAP_CONTENT);
             layoutParams.addRule(RelativeLayout.CENTER_IN_PARENT, RelativeLayout.TRUE);
@@ -481,7 +480,7 @@ public class PhotoEditorActivity extends AppCompatActivity implements View.OnCli
 
 
     private void returnBackWithUpdateImage() {
-        updateView(View.GONE);
+        //updateView(View.GONE);
         RelativeLayout.LayoutParams layoutParams = new RelativeLayout.LayoutParams(
                 RelativeLayout.LayoutParams.WRAP_CONTENT, RelativeLayout.LayoutParams.WRAP_CONTENT);
         layoutParams.addRule(RelativeLayout.CENTER_IN_PARENT, RelativeLayout.TRUE);
@@ -609,8 +608,8 @@ public class PhotoEditorActivity extends AppCompatActivity implements View.OnCli
     @Override
     public void onAddViewListener(ViewType viewType, int numberOfAddedViews) {
         if (numberOfAddedViews > 0) {
-            undoTextView.setVisibility(View.VISIBLE);
-            undoTextTextView.setVisibility(View.VISIBLE);
+            //undoTextView.setVisibility(View.VISIBLE);
+            //undoTextTextView.setVisibility(View.VISIBLE);
         }
         switch (viewType) {
             case BRUSH_DRAWING:
