@@ -11,6 +11,7 @@ import android.content.res.Resources;
 import android.content.pm.PackageManager;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
+import android.graphics.Canvas;
 import android.graphics.Matrix;
 import android.graphics.Typeface;
 import android.net.Uri;
@@ -502,10 +503,14 @@ public class PhotoEditorActivity extends AppCompatActivity implements View.OnCli
                 try {
                     FileOutputStream out = new FileOutputStream(file);
                     if (parentImageRelativeLayout != null) {
-                        parentImageRelativeLayout.setDrawingCacheEnabled(true);
-                        Bitmap bitmap = parentImageRelativeLayout.getDrawingCache();
-                        Bitmap rotatedBitmap = rotateBitmap(bitmap, imageOrientation, true);
-                        rotatedBitmap.compress(Bitmap.CompressFormat.JPEG, 80, out);
+                      Bitmap bitmap = Bitmap.createBitmap(parentImageRelativeLayout.getWidth(), parentImageRelativeLayout.getHeight(), Bitmap.Config.ARGB_8888);
+                      Canvas canvas = new Canvas(bitmap);
+                      parentImageRelativeLayout.draw(canvas);
+
+                      //photoEditorSDK.saveImage(selectedImagePath, imageName);
+
+                      Bitmap rotatedBitmap = rotateBitmap(bitmap, imageOrientation, true);
+                      rotatedBitmap.compress(Bitmap.CompressFormat.JPEG, 80, out);
                     }
 
                     out.flush();
